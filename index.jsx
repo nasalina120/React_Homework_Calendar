@@ -3,7 +3,8 @@ import styles from "./Calendar.module.sass";
 import { WEEK_DAYS, MONTHS } from "./constants";
 import CalendarUtils from "./calendarUtils";
 
-import { getMonth, getYear } from "date-fns";
+import { getMonth, getYear, isSameMonth } from "date-fns";
+import classNames from "classnames";
 
 class Calendar extends Component {
   constructor(props) {
@@ -27,17 +28,13 @@ class Calendar extends Component {
     // const isTheSameDay1 = isSameDay(currentDate, new Date(2022, 0, 8));
     // const isTheSameDay2 = isSameDay(currentDate, currentDate);
 
-    // // перевірка, чи відноситься дата до виводимого справа місяця
-    // // (щоб відображати дати поточного місяця і не відображати або притіняти дати попереднього/наступного місяців)
-    // const isTheSameMonth1 = isSameMonth(date, new Date(2021, 0, 7));
-    // const isTheSameMonth2 = isSameMonth(date, new Date(2023, 0, 7));
-
     return (
       <div className={styles.pageContainer}>
         <div className={styles.calendarWrapper}>
           <p className={styles.calendarTitle}>
             {currentMonth} {currentYear}
           </p>
+
           <div className={styles.calendarWeekdaysHeader}>
             {WEEK_DAYS.map((w, index) => (
               <div key={index} className={styles.weekdayName}>
@@ -49,11 +46,15 @@ class Calendar extends Component {
           <div className={styles.calendarGrid}>
             {monthDays.map((m, weekIndex) => (
               <div key={weekIndex} className={styles.calendarWeekRow}>
-                {m.map((day, dayIndex) => (
-                  <div key={dayIndex} className={styles.calendarDayCell}>
-                    {day}
-                  </div>
-                ))}
+                {m.map((day, dayIndex) => {
+                  const isCurrentMonth = isSameMonth(day, date);
+
+                  return (
+                    <div key={dayIndex} className={styles.calendarDayCell}>
+                      {isCurrentMonth ? day.getDate() : ""}
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>

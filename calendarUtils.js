@@ -22,7 +22,7 @@ const CalendarUtils = (date) => {
     );
 
     for (let j = 0; j < 7; j++) {
-      weekDays.push(getDate(addDays(startWeekDay, j)));
+      weekDays.push(addDays(startWeekDay, j));
     }
     monthDays.push(weekDays);
   }
