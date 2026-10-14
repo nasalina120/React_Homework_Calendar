@@ -1,5 +1,7 @@
 import { Component } from "react";
 import styles from "./Calendar.module.sass";
+import { WEEK_DAYS, MONTHS } from "./constants";
+
 import {
   getDate,
   getDay,
@@ -12,9 +14,8 @@ import {
   parse,
   isSameDay,
   isSameMonth,
+  getMonth,
 } from "date-fns";
-
-const WEEK_DAYS = ["S", "M", "T", "W", "T", "F", "S"];
 
 class Calendar extends Component {
   constructor(props) {
@@ -33,6 +34,9 @@ class Calendar extends Component {
     const currentDay = getDate(currentDate);
     // день тижня
     const currentWeekday = WEEK_DAYS[getDay(currentDate)];
+
+    const currentYear = getYear(date);
+    const currentMonth = MONTHS[getMonth(date)];
 
     // номер початкового тижня місяця (як тиждень першого дня місяці)
     const startWeek = getWeek(startOfMonth(date));
@@ -68,6 +72,9 @@ class Calendar extends Component {
     return (
       <div className={styles.pageContainer}>
         <div className={styles.calendarWrapper}>
+          <p className={styles.calendarTitle}>
+            {currentMonth} {currentYear}
+          </p>
           <div className={styles.calendarWeekdaysHeader}>
             {WEEK_DAYS.map((w, index) => (
               <div key={index} className={styles.weekdayName}>
