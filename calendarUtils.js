@@ -6,7 +6,6 @@ import {
   startOfWeek,
   parse,
   addDays,
-  getDate,
 } from "date-fns";
 
 const CalendarUtils = (date) => {

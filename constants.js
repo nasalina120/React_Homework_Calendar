@@ -1,4 +1,14 @@
 const WEEK_DAYS = ["S", "M", "T", "W", "T", "F", "S"];
+const WEEK_DAYS_Full = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 const MONTHS = [
   "JANUARY",
   "FEBRUARY",
@@ -14,4 +24,4 @@ const MONTHS = [
   "DECEMBER",
 ];
 
-export { WEEK_DAYS, MONTHS };
+export { WEEK_DAYS, MONTHS, WEEK_DAYS_Full };
