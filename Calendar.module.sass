@@ -1,0 +1,72 @@
+$color-red: #ff0055
+$sizeSq: 30px
+.pageContainer
+    display: flex            
+    justify-content: center   
+    align-items: center      
+    
+    min-height: 100vh        
+    background-color: #fff   
+
+
+.calendarWrapper
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 320px  
+
+    padding: 5px
+
+ 
+.calendarTitle
+    color: #009688  
+    font-size: 24px
+    font-weight: bold
+    margin-bottom: 25px
+  
+ 
+.calendarWeekdaysHeader
+    width: 100%
+    margin-bottom: 15px
+    @extend %grid
+
+.weekdayName
+    color:$color-red  
+    font-weight: bold   
+    text-align: center
+
+ 
+.calendarGrid
+    display: flex
+    flex-direction: column
+    gap: 10px   
+    width: 100%
+
+.calendarWeekRow
+    width: 100%
+    @extend %grid
+ 
+.calendarDayCell
+    color: #b0b0b0 
+    font-weight: bold
+    height: $sizeSq 
+    width: 100%  
+    @extend %flex
+
+.today
+    color:$color-red  
+    border: 3px solid $color-red 
+    border-radius: 50%  
+    margin: 0 auto 
+    width: $sizeSq 
+    height: $sizeSq  
+    @extend %flex
+
+%flex
+    display: flex 
+    justify-content: center
+    align-items: center
+
+%grid
+    display: grid
+    grid-template-columns: repeat(7, 1fr)  
